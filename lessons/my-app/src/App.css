@@ -13,6 +13,9 @@
   grid-area: c;
   background-color: cornflowerblue;
 }
+a {
+  text-decoration: none;
+}
 
 
 

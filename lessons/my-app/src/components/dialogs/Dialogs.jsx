@@ -1,40 +1,38 @@
+import { NavLink } from 'react-router-dom'
 import s from './Dialogs.module.css'
+const DialogItem = (props) => {
+    return (
+        <div >
+                 <NavLink activeClassName={s.active} to={props.way}>{props.name}</NavLink>
+        </div>
+    )
+}
+const Message = (props) => {
+    return (
+        <div className={s.message}>
+                   <div>{props.text}</div> 
+        </div>
+    )
+}
 const Dialogs = () => {
     return (
         <div className={s.dialogs}>
            <div className={s.dialogsItems} >
-               <div className={s.dialog + ' ' + s.active}>
-                   Tolik
-               </div>
-               <div className={s.dialog}>
-                   Valera
-               </div>
-               <div className={s.dialog}>
-                   Slavik
-               </div>
-               <div className={s.dialog}>
-                   Galya
-               </div>
-               <div className={s.dialog}>
-                   Tamara
-               </div>
+               <DialogItem way="/dialogs/1" name="Tolik"/>
+               <DialogItem way="/dialogs/2" name="Vasay"/>
+               <DialogItem way="/dialogs/3" name="Masha"/>
+               <DialogItem way="/dialogs/4" name="Lida"/>
+               <DialogItem way="/dialogs/5" name="Stepan"/>
+               <DialogItem way="/dialogs/6" name="Homer"/>
+               
            </div>
            <div className={s.messages}>
-               <div className={s.message}>
-                    I love to spy on women 
-               </div>
-               <div className={s.message}>
-                    O my gosh
-               </div>
-               <div className={s.message}>
-                    I think this is nonsence
-               </div>
-               <div className={s.message}>
-                    I was very drank tommorow
-               </div>
-               <div className={s.message}>
-                    Hello, i am Tamara
-               </div>
+              <Message text="Hello nigger" ></Message>
+              <Message text="What you say about my mom?"></Message>
+              <Message text="Ye ye ye" ></Message>
+              <Message text="Stop. This is police!!!"></Message>
+              <Message text="Runaway niggers!!!" ></Message>
+              <Message text="facking cops!!!" ></Message>
            </div>
         </div>
     )

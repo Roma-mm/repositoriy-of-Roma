@@ -1,14 +1,10 @@
 import MyPosts from './myposts/MyPosts'
 import s from  './Profile.module.css'
+import ProfileInfo from './profileinfo/ProfileInfo';
 const Profile = () => {
     return (
       <div>
-        <div>
-          <img src="https://s3.amazonaws.com/images.seroundtable.com/google-css-images-1515761601.jpg" />
-        </div>
-        <div>
-          ava + decription
-        </div>
+        <ProfileInfo/>
         <MyPosts />
       </div>
     )
