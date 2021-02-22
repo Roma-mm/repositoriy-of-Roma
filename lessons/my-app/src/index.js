@@ -3,30 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-let postData = [
-  {id: 1, text: "Hi, i'll eat Jerry" , likes: '12'},
-  {id: 2, text: 'wait!', likes: '15' },
-];
-let dialogData = [
-  { name: "Tolik", way: "/dialogs/1"},
-  { name: "Vasya", way: "/dialogs/2"},
-  { name: "Masha", way: "/dialogs/3"},
-  { name: "Lida", way: "/dialogs/4"},
-  { name: "Stepan", way: "/dialogs/5"},
-  { name: "Homer", way: "/dialogs/6"},
-];
-let Messages  = [
-  {id: 1, text: "Hello nigger" },
-  {id: 2, text: "What you say about my mom?" },
-  {id: 3, text: "Ye ye ye" },
-  {id: 4, text: "Stop. This is police!!!" },
-  {id: 5, text: "Runaway niggers!!!" },
-  {id: 6, text: "facking cops!!!" },
+import state from './redux/State';
 
-];
+
 ReactDOM.render(
   <React.StrictMode>
-    <App dialog={dialogData} message={Messages} post={postData}/>
+    <App data={state.friends} appState={state}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
