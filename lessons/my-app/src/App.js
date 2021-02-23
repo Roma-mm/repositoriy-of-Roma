@@ -14,7 +14,7 @@ import Settings from './components/settings/Settings';
 const App = (props) => {
   return (
     <BrowserRouter>
-      <div className="app-wrapper">
+      <div  className="app-wrapper">
         <Header />
         <Navbar data={props.data} />
         <div className="app-wrapper-content">

@@ -8,7 +8,7 @@ import state from './redux/State';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App data={state.friends} appState={state}/>
+    <App  data={state.friends} appState={state}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

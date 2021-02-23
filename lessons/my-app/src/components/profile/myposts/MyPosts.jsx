@@ -1,17 +1,19 @@
+import React from 'react';
 import s from './MyPosts.module.css'
 import Post from './post/Post'
 
 const MyPosts = (props) => {
-  
+  let el = React.createRef();
   let PostElement = props.post.postData.map( p => <Post message={p.text} likes={p.likes} /> )
+  
   return (
-    <div>
+    <div >
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea className={s.text}></textarea>
+          <textarea ref={el} className={s.text}></textarea>
         </div>
-        <button className={s.btn}>Add post</button>
+        <button onClick={() => el.current.innerHTML = "zhopa"} className={s.btn}>Add post</button>
         <button className={s.btn2}>Remove</button>
       </div>
       <div className={s.posts}>
