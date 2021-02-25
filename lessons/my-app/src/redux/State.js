@@ -8,7 +8,7 @@
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBoOxv-DbMlA1aiqJ0-xnHSL8sPh8JH2rp3w&usqp=CAU"/>,
    ]
    
-  let state = {
+   let state = {
       profilePage:{
         postData: [
           {id: 1, text: "Hi, i'll eat Jerry" , likes: '12'},
@@ -41,6 +41,10 @@
         {name: "Andrew", img: images[2]},
       ]
      
+  }
+  export let addPost = (par) => {
+    debugger;
+     state.profilePage.postData.push({id:3, text: par, likes: 4})
   }
   
   export default state;

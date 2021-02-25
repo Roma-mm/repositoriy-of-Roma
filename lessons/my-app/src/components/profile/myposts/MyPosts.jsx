@@ -1,19 +1,25 @@
 import React from 'react';
+import { addPost } from '../../../redux/State';
 import s from './MyPosts.module.css'
 import Post from './post/Post'
 
+
 const MyPosts = (props) => {
-  let el = React.createRef();
   let PostElement = props.post.postData.map( p => <Post message={p.text} likes={p.likes} /> )
-  
+  let newPostElement = React.createRef();
+  let addPost = () => {
+    debugger;
+    let text = newPostElement.current.value;
+    props.addPost(text);
+  }
   return (
     <div >
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea ref={el} className={s.text}></textarea>
+          <textarea ref={newPostElement} className={s.text}></textarea>
         </div>
-        <button onClick={() => el.current.innerHTML = "zhopa"} className={s.btn}>Add post</button>
+        <button onClick={addPost} className={s.btn}>Add post</button>
         <button className={s.btn2}>Remove</button>
       </div>
       <div className={s.posts}>
