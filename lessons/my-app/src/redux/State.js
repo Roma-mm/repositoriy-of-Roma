@@ -16,6 +16,7 @@ import {rerenderEntireTree} from './../render'
           {id: 1, text: "Hi, i'll eat Jerry" , likes: '12'},
           {id: 2, text: 'wait!', likes: '15' },
         ],
+        newPostText : ''
       },
     
       dialogPage: {
@@ -44,10 +45,17 @@ import {rerenderEntireTree} from './../render'
       ]
      
   }
-  export let addPost = (par) => {
+  export let addPost = () => {
    
-     state.profilePage.postData.push({id:3, text: par, likes: Math.floor(Math.random() * 30 )});
+     state.profilePage.postData.push({id:3, text: state.profilePage.newPostText, likes: Math.floor(Math.random() * 30 )});
+     state.profilePage.newPostText = '';
      rerenderEntireTree(state);
   }
+
+  export let updatePost = (newText) => {
+   
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
+ }
   
   export default state;
