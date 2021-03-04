@@ -3,7 +3,7 @@ import s from  './Profile.module.css'
 import ProfileInfo from './profileinfo/ProfileInfo';
 
 const Profile = (props) => {
-  
+ 
     return (
       <div>
         <ProfileInfo/>

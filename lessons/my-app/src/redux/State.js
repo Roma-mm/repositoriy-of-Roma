@@ -1,5 +1,7 @@
-import {rerenderEntireTree} from './../render'
 
+let rerenderEntireTree = () => { 
+  console.log('state changed');
+}
 
    let images = [
     <img src="http://sun9-39.userapi.com/s/v1/ig2/8aqATIMGN_0ucbrpPT2w9-Od9s4_R-28vuF1rs263b_AnT8lBidXi9Tp1qazfob7TONkocJPt4t4cK1Z6ZOpdx3e.jpg?size=200x0&quality=96&crop=35,35,1002,1009&ava=1"/>,
@@ -10,13 +12,13 @@ import {rerenderEntireTree} from './../render'
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBoOxv-DbMlA1aiqJ0-xnHSL8sPh8JH2rp3w&usqp=CAU"/>,
    ]
    
-  export let state = {
+  let state = {
       profilePage:{
         postData: [
           {id: 1, text: "Hi, i'll eat Jerry" , likes: '12'},
           {id: 2, text: 'wait!', likes: '15' },
         ],
-        newPostText : ''
+        newPostText : 'aaaaaaaa'
       },
     
       dialogPage: {
@@ -45,17 +47,21 @@ import {rerenderEntireTree} from './../render'
       ]
      
   }
-  export let addPost = () => {
+
+  window.state = state;
+  export const addPost = () => {
    
      state.profilePage.postData.push({id:3, text: state.profilePage.newPostText, likes: Math.floor(Math.random() * 30 )});
      state.profilePage.newPostText = '';
-     rerenderEntireTree(state);
+     rerenderEntireTree();
   }
-
-  export let updatePost = (newText) => {
+  export const subscribe = (observer) => {
+    rerenderEntireTree = observer;
+  }
+  export const updatePost = (newText) => {
    
     state.profilePage.newPostText = newText;
-    rerenderEntireTree(state);
+    rerenderEntireTree();
  }
   
   export default state;
