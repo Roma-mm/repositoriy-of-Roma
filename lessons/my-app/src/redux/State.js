@@ -1,3 +1,5 @@
+const add_post = "add-post";
+const update_post = "update_post";
 let store = {
   
   rerenderEntireTree() {
@@ -47,17 +49,20 @@ let store = {
     this.rerenderEntireTree = observer;
   },
   dispatch(action) {
-    if (action.type === 'add-post') {
+    if (action.type === add_post) {
       this._state.profilePage.postData.push({ id: 3, text: this._state.profilePage.newPostText, likes: Math.floor(Math.random() * 30) });
       this._state.profilePage.newPostText = '';
       this.rerenderEntireTree();
-    } else if (action.type === 'update-post') {
+    } else if (action.type === update_post) {
       this._state.profilePage.newPostText = action.newText;
       this.rerenderEntireTree();
     }
   },
   
 };
+
+export const addPostActionCreater = () => ({type: add_post });
+export const updatePostActionCreater = (text) => ({type: update_post, newText: text});
 
   window.store = store;
 
