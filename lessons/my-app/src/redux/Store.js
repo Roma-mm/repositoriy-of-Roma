@@ -1,7 +1,6 @@
-const add_post = "add_post";
-const update_post = "update_post";
-const add_message = "add_message";
-const update_message = "update_message";
+import dialogReducer from './dialog_reducer';
+import profileReducer from './profile_reducer';
+
 let store = {
   
   rerenderEntireTree() {
@@ -52,29 +51,15 @@ let store = {
     this.rerenderEntireTree = observer;
   },
   dispatch(action) {
-    if (action.type === add_post) {
-      this._state.profilePage.postData.push({ id: 3, text: this._state.profilePage.newPostText, likes: Math.floor(Math.random() * 30) });
-      this._state.profilePage.newPostText = '';
-      this.rerenderEntireTree();
-    } else if (action.type === update_post) {
-      this._state.profilePage.newPostText = action.newText;
-      this.rerenderEntireTree();
-    } else if (action.type === add_message) {
-      this._state.dialogPage.messages.push({id: 7, text: this._state.dialogPage.newMessage});
-      this._state.dialogPage.newMessage = '';
-      this.rerenderEntireTree();
-    } else if (action.type === update_message) {
-      this._state.dialogPage.newMessage = action.newText;
-      this.rerenderEntireTree();
-    }
+   profileReducer(this._state.profilePage, action);
+   dialogReducer(this._state.dialogPage, action);
+   this.rerenderEntireTree();
   },
  
   
 };
-export const addMessageActionCreator = () => ({type: "add_message"});
-export const updateMessageCreator = (text) => ({type: "update_message", newText: text});
-export const addPostActionCreater = () => ({type: add_post });
-export const updatePostActionCreater = (text) => ({type: update_post, newText: text});
+
+
 
   window.store = store;
 
