@@ -1,5 +1,7 @@
-const add_post = "add-post";
+const add_post = "add_post";
 const update_post = "update_post";
+const add_message = "add_message";
+const update_message = "update_message";
 let store = {
   
   rerenderEntireTree() {
@@ -13,7 +15,7 @@ let store = {
         { id: 1, text: "Hi, i'll eat Jerry", likes: '12' },
         { id: 2, text: 'wait!', likes: '15' },
       ],
-      newPostText: 'aaaaaaaa'
+      newPostText: ''
     },
 
     dialogPage: {
@@ -32,8 +34,9 @@ let store = {
         { id: 4, text: "Stop. This is police!!!" },
         { id: 5, text: "Runaway niggers!!!" },
         { id: 6, text: "facking cops!!!" },
-
-      ]
+      
+      ],
+      newMessage: "",
     },
     friends: [
       { name: "Tolik",  img: <img src="https://www.infoniac.ru/upload/medialibrary/08a/08abab5b38db21b57b4fb12bdbcdd4c3.jpg"/>,  },
@@ -56,11 +59,20 @@ let store = {
     } else if (action.type === update_post) {
       this._state.profilePage.newPostText = action.newText;
       this.rerenderEntireTree();
+    } else if (action.type === add_message) {
+      this._state.dialogPage.messages.push({id: 7, text: this._state.dialogPage.newMessage});
+      this._state.dialogPage.newMessage = '';
+      this.rerenderEntireTree();
+    } else if (action.type === update_message) {
+      this._state.dialogPage.newMessage = action.newText;
+      this.rerenderEntireTree();
     }
   },
+ 
   
 };
-
+export const addMessageActionCreator = () => ({type: "add_message"});
+export const updateMessageCreator = (text) => ({type: "update_message", newText: text});
 export const addPostActionCreater = () => ({type: add_post });
 export const updatePostActionCreater = (text) => ({type: update_post, newText: text});
 

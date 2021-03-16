@@ -22,7 +22,7 @@ const App = (props) => {
             <Profile newPostText={props.appState.profilePage.newPostText}
             dispatch={props.dispatch}
               profilePage={props.appState.profilePage} />} />
-          <Route path="/dialogs" render={() => <Dialogs state={props.appState.dialogPage} />} />
+          <Route path="/dialogs" render={() => <Dialogs state={props.appState} dispatch={props.dispatch} />} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />
